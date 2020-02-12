@@ -1,0 +1,18 @@
+
+.friend_ava{
+    width: 60px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    transition: .4s;
+}
+
+.friend_ava:hover{
+    border: 1px solid #241915;
+}
+
+.friend_name{
+    padding: 10px 0;
+    text-align: center;
+    color: #e1dcd9;
+    
+}

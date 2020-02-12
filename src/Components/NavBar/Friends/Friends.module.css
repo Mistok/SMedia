@@ -1,0 +1,6 @@
+
+.friends{
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    background-color: #4b6684;
+}

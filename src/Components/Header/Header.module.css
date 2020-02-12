@@ -1,0 +1,10 @@
+
+.header{
+    grid-area: h;
+    max-height: 20vh;
+    background-color: #4b6684;
+}
+
+.header_img{
+    max-height: 20vh;
+}

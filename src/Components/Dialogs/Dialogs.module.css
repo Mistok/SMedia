@@ -1,0 +1,73 @@
+
+.dialogWrapper{
+    background-color:#f7f7f7;
+}
+
+.dialogs{
+    display: grid;
+    grid-template-columns: 10fr 10fr;
+    padding: 15px 10px;
+
+}
+
+.dialogs .active{
+    color: gold;
+}
+
+.dialog_items{
+
+}
+
+.dialog{
+
+}
+
+.messages{
+
+}
+
+.messages .message {
+
+}
+
+
+.newMessageBlock{
+    padding: 15px 10px;
+    position: relative;
+    bottom: 0;
+    transition: 2s;
+}
+.newMessagetext{
+    display: block;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-style: italic;
+    background-color: transparent;
+    color: #241915;
+    width: 90%;
+    border-radius: 5px;
+    border: 2px solid #241915;
+    outline: 2px transparent ;
+    margin: 0 auto;
+    resize: none;
+}
+.sendBtn{
+    padding: 5px 10px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    box-shadow: none;
+    transition: .6s ease-out;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #241915;
+    border-bottom: 1px solid #241915;
+    margin-top: 10px;
+    position: relative;
+    margin-left: 100%;
+    transform: translateX(-150%);
+    box-sizing: border-box;
+}
+.sendBtn:hover{
+    border: 1px solid #241915;
+}

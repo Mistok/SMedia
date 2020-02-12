@@ -1,0 +1,87 @@
+
+
+.padd{
+    /* паддинги */
+    padding: 15px;
+}
+
+.post{
+    color: #e1dcd9;
+    display: flex;
+    background-color: #4b6684;
+    align-items: center;
+    border-radius: 12px;
+}
+
+img{
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 15px;
+}
+
+.post_message{
+    padding: 5px;
+    font-size: 12px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.post_content{
+    display: grid;
+    grid-template-columns: 
+        "t t"
+        "lp lc "
+    ;
+}
+
+.post_text{
+    grid-area: t;
+    width: 80%;
+}
+
+.message_title{
+    margin: 5px 0 ;
+    font-size: 16px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.like_panel{  
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    grid-area: lp;
+}
+
+.like_buttons > button:first-child{
+    margin-right: 10px;
+    background-color: #0700F3;
+    color: #e1dcd9;
+}
+.like_buttons > button{
+    border: none;
+    box-shadow: 1px 1px 1px 1px #022;
+    padding: 3px 5px;
+    border-radius: 2px;
+    color: black;
+}
+.likes_count{
+    font-size: 11px;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 5px;
+    font-size: grey;
+    font-weight: bold;
+    grid-area: lc;
+}
+
+
+@media (min-width: 850px) {
+    
+    .like_panel{  
+        justify-content: left;
+    }
+    .likes_count{
+        margin-left: 25px;
+    }
+}

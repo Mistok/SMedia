@@ -1,0 +1,52 @@
+
+
+.padd{
+    /* паддинги */
+    padding: 15px;
+}
+
+.post{
+    position: relative;
+    color: wheat;
+}
+
+.new_post_textarea{
+    display: block;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-style: italic;
+    background-color: transparent;
+    color: #241915;
+    width: 90%;
+    border-radius: 5px;
+    border: 2px solid #241915;
+    outline: 2px transparent ;
+    margin: 0 auto;
+    resize: none;
+}
+
+.send_post{
+    margin-top: 10px;
+    padding: 5px 10px;
+    color: #241915;
+    font-size: 14px;
+    font-weight: normal;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 2px;
+    border: 2px solid transparent;
+    padding: 5px;
+    position: relative;
+    display: inline-block;
+    left: 100%;
+    transform: translateX(-130%);
+    transition: .4s ease-out;
+    border-radius: 5px;
+    border-bottom: 2px solid #241915;
+}
+
+.send_post:hover{
+    font-style: 15px;
+    border: 2px solid #241915;
+    cursor: pointer;
+}

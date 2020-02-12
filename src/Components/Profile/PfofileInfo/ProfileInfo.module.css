@@ -1,0 +1,24 @@
+.main_picture{
+    background: url('https://i.pinimg.com/736x/4f/8d/b7/4f8db7aeee06fb172ee34a023f530acb.jpg');
+    height: 120px;
+    width: 100%;
+}
+
+.content{
+    grid-area: m;
+    background-color: cornflowerblue;
+    position: relative;
+}
+
+.padd{
+    /* паддинги */
+    padding: 15px;
+}
+
+.ava{
+
+}
+
+.description{
+    
+}
