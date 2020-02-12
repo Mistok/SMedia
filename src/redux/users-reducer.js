@@ -1,7 +1,8 @@
 
 // users page
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';
+
 
 let initialState = {
     users: [
@@ -16,33 +17,29 @@ let initialState = {
 
 const usersReducer = (state = initialState, action) => {
 
-
     switch (action.type) {
 
 
-        case '':
+        case FOLLOW:
+
+            return{
+
+            };
+
+        case UNFOLLOW:
+
+            return{
+
+            };
 
         default:
+
             return state;
     }
 };
 
+export const followAC = (userId) => ({type: FOLLOW, userId}); //action creator
 
-export const addPostActionCreator = () => {
-
-    return {
-        type: ADD_POST
-    }
-
-};
-
-export const updateNewPostTextActionCreator = (text) => {
-
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text
-    }
-
-};
+export const unFollowAC = (userId) => ({type: UNFOLLOW, userId}); //action creator
 
 export default usersReducer;
