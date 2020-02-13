@@ -2,6 +2,7 @@ import React from 'react';
 import Class from  './users.module.css';
 
 let Users = (props) => {
+
     if( props.users.length === 0 ){
         props.setUsers(
             [
@@ -67,8 +68,8 @@ let Users = (props) => {
              <div>
 
                  { u.followed
-                     ? <button onClick = { props.follow(u.id) } >follow</button>
-                     : <button onClick = { props.unFollow(u.id) } >unfollow</button>
+                     ? <button onClick = { () => { props.unFollow(u.id)} } >Unfollow</button>
+                     : <button onClick = { () => { props.follow(u.id)} } >Follow</button>
                  }
 
              </div>
