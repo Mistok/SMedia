@@ -34,3 +34,9 @@
 .paginationPage:active{
     box-shadow: inset 1px 1px 1px 0px rgba(0,0,0,0.75);
 }
+.users_status{
+    padding: 5px;
+    font-size: 11px;
+    color: #4b6684;
+    font-style: italic;
+}
