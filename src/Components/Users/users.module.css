@@ -4,3 +4,33 @@
     height: 120px;
     border-radius: 20px;
 }
+.selected{
+    font-weight: bold;
+}
+
+.paginationContainer{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #4b6684;
+}
+.paginationPage{
+    font-size: 16px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: 1px solid transparent;
+    transition: 0.3s ease-in-out;
+    box-sizing: border-box;
+    border-radius: 2px;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+}
+.paginationPage:hover{
+    box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.75);
+
+}
+.paginationPage:active{
+    box-shadow: inset 1px 1px 1px 0px rgba(0,0,0,0.75);
+}
