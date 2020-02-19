@@ -73,16 +73,16 @@ const usersReducer = (state = initialState, action) => {
     }
 };
 
-export const followAC = (userId) => ({type: FOLLOW, userId}); // follow action creator
+export const follow = (userId) => ({type: FOLLOW, userId}); // follow action creator
 
-export const unFollowAC = (userId) => ({type: UNFOLLOW, userId}); // unfollow action creator
+export const unFollow = (userId) => ({type: UNFOLLOW, userId}); // unfollow action creator
 
-export const setUsersAC = (users) => ({type: SET_USERS, users});   // users from servers
+export const setUsers = (users) => ({type: SET_USERS, users});   // users from servers
 
-export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 
-export const setUsersTotalCountAC = (totalUsersCount) => ({type: TOTAL_USERS_COUNT, count: totalUsersCount});   // users total count changed
+export const setUsersTotalCount = (totalUsersCount) => ({type: TOTAL_USERS_COUNT, count: totalUsersCount});   // users total count changed
 
-export const toggleIsFetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching}); // preloader flag
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching}); // preloader flag
 
 export default usersReducer;

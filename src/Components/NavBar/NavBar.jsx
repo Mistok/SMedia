@@ -15,15 +15,18 @@ const Navbar = (props) => {
                     <NavLink to="/dialogs" activeClassName={`${Class.active}`} className={`${Class.navLink}`}>Dialogs</NavLink>
                 </div>
                 <div className={`${Class.NavLink_container}`}>
-                    <NavLink to="#" activeClassName={Class.active} className={`${Class.navLink}`}>News
+                    <NavLink to="/users" activeClassName={`${Class.active}`} className={`${Class.navLink}`}>Users</NavLink>
+                </div>
+                <div className={`${Class.NavLink_container}`}>
+                    <NavLink to="/News" activeClassName={Class.active} className={`${Class.navLink}`}>News
                     </NavLink>
                 </div>
                 <div className={`${Class.NavLink_container}`}>
-                    <NavLink to="#" activeClassName={Class.active} className={`${Class.navLink}`}>Music
+                    <NavLink to="/music" activeClassName={Class.active} className={`${Class.navLink}`}>Music
                     </NavLink>
                 </div> 
                 <div className={`${Class.NavLink_container}`}>
-                    <NavLink to="#" activeClassName={Class.active} className={`${Class.navLink}`}>Settings
+                    <NavLink to="/settings" activeClassName={Class.active} className={`${Class.navLink}`}>Settings
                     </NavLink>
                 </div> 
             </nav>
