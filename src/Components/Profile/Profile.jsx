@@ -7,13 +7,14 @@ import MyPostsContainer from './MyPosts/MyPostsContainer.jsx';
 
 
 
+
 const Profile = (props) => {
 
     return(
            
         <main className = {Class.content}>
 
-            <ProfileInfo/> 
+            <ProfileInfo profile = {props.profile}/>
 
             <div className = { `${Class.posts} + ${Class.padd}` }>     
 

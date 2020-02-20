@@ -12,7 +12,7 @@ let Users = (props) => {
         pages.push(i)
     }
 
-    return <div>
+    return <div className={Class.users_wrapper}>
         <div className={Class.paginationContainer}>
             {pages.map( p => {
                 return <span onClick={
@@ -20,36 +20,37 @@ let Users = (props) => {
                 }
                 className={`${Class.paginationPage} ${props.currentPage === p && Class.selected}`}>{p}</span>
             })}
-
         </div>
+        <div className={Class.users_container}>
         {
-            props.users.map( u => <div key={u.id}>
+            props.users.map( u => <div className={Class.users_card} key={u.id}>
 
+                <div className={Class.follow_section}>
+                    <div className={Class.users_photo}>
+                        <img className = {Class.users_photo} src = {u.photos.small || 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Nicolas_Cage_2011_CC.jpg/220px-Nicolas_Cage_2011_CC.jpg'} alt = "users photo"/>
+                    </div>
 
+                    <div className={Class.follow_btn_container}>
 
-                <div><img className = {Class.users_photo} src = {u.photos.small || 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Nicolas_Cage_2011_CC.jpg/220px-Nicolas_Cage_2011_CC.jpg'} alt = ""/></div>
+                        { u.followed
+                            ? <button className={Class.follow_btn} onClick = { () => { props.unFollow(u.id)} } >Unfollow</button>
+                            : <button className={Class.follow_btn} onClick = { () => { props.follow(u.id)} } >Follow</button>
+                        }
 
-                <div>
-
-                    { u.followed
-                        ? <button onClick = { () => { props.unFollow(u.id)} } >Unfollow</button>
-                        : <button onClick = { () => { props.follow(u.id)} } >Follow</button>
-                    }
-
-                </div>
-                <div>
-                    <div>
-                        <div>
-                            {u.name}
-                        </div>
-                        <div className={Class.users_status}>
-                            {u.status}
-                        </div>
                     </div>
 
                 </div>
-            </div>)}
 
+                <div className={Class.name_section}>
+                    <div className={Class.users_name}>
+                        {u.name}
+                    </div>
+                    <div className={Class.users_status}>
+                        {u.status}
+                    </div>
+                </div>
+            </div>)}
+        </div>
     </div>
 };
 

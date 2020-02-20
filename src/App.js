@@ -7,9 +7,9 @@ import {BrowserRouter, Route} from 'react-router-dom';
 
 import Navbar from './Components/NavBar/NavBar';
 import Header from './Components/Header/Header';
-import Profile from './Components/Profile/Profile';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import UsersContainer from "./Components/Users/UsersContainer";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
 
 
 
@@ -35,7 +35,7 @@ const  App = (props) => {
 
                 <Route path = '/profile' render = { () =>
 
-                    <Profile/> }
+                    <ProfileContainer /> }
                 />
                 <Route path = '/users' render = { () =>
 
