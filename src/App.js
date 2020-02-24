@@ -33,7 +33,7 @@ const  App = (props) => {
 
                 />
 
-                <Route path = '/profile' render = { () =>
+                <Route path = '/profile/:userId' render = { () =>
 
                     <ProfileContainer /> }
                 />

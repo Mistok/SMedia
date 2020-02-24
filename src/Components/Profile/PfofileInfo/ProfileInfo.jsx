@@ -11,7 +11,7 @@ const ProfileInfo = (props) => {
     return(
         <div className='profileInfo'>
 
-            <div className={Class.main_picture}></div>
+            <div className={Class.main_picture}/>
 
             <div className={`${Class.profile_info_container } + ${Class.padd}`}>
 
