@@ -3,12 +3,13 @@ import logo from '../../logo.svg';
 import Class from './Header.module.css';
 import {NavLink} from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
     return (
     <header className={Class.header}>
         <img src={logo} alt="logo" className={Class.header_img}/>
         <div className={Class.login_block}>
-            <NavLink to={'/login'} activeClassName={`${Class.active}`}>Login</NavLink>
+            {props.isAuth ? <div>{props.login}</div> : <NavLink to={'/login'} activeClassName={`${Class.active}`}>Login</NavLink>}
+
         </div>
      </header>
      

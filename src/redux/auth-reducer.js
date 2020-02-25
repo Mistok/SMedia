@@ -1,13 +1,14 @@
 
 // Authentication reducer
 const SET_USER_DATA = 'SET_USER_DATA';
-const UNFOLLOW = 'UNFOLLOW';
+
 
 
 let initialState = {
     userId: null,
     email: null,
     login: null,
+    isAuth: false
     //isFetching: true
 };
 
@@ -18,7 +19,8 @@ const authReducer = ( state = initialState, action) => {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data
+                ...action.data,
+                isAuth: true
             };
 
 
@@ -28,5 +30,5 @@ const authReducer = ( state = initialState, action) => {
     }
 };
 
-export const setUsersData  = (userId, login, email) => ({type: SET_USER_DATA, data: {userId, login, email}});
+export const setAuthUsersData  = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, email, login}});
 export default authReducer;

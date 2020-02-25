@@ -17,7 +17,7 @@ const ProfileInfo = (props) => {
 
                 <div className={Class.ava}>
 
-                    <img className={Class.ava_img} src={props.profile.photos.large}/>
+                    <img className={Class.ava_img} src={props.profile.photos.large} />
 
                 </div>
 
@@ -38,8 +38,6 @@ const ProfileInfo = (props) => {
                             <a className={Class.social_link} href={props.profile.contacts.facebook}>FB</a>
                         </div>
                     </div>
-
-
 
                 </div>
                 
