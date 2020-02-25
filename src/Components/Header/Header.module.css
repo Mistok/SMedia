@@ -3,8 +3,34 @@
     grid-area: h;
     max-height: 20vh;
     background-color: #4b6684;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header_img{
     max-height: 20vh;
+}
+.login_block{
+    color: #e1dcd9;
+}
+.login_block a{
+    font-size: 18px;
+    text-decoration: none;
+    border-bottom: 1px  solid transparent;
+    transition: .5s;
+    color: #e1dcd9;
+    margin-right: 20px;
+}
+
+.login_block a:hover{
+    color: #61dbfb;
+    border-bottom: 1px solid #61dbfb;
+
+}
+
+.active{
+    color: #61dbfb !important;
+    border-bottom: 1px solid #61dbfb !important;
+
 }

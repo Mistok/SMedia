@@ -6,10 +6,10 @@ import './App.css';
 import {BrowserRouter, Route} from 'react-router-dom';
 
 import Navbar from './Components/NavBar/NavBar';
-import Header from './Components/Header/Header';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import UsersContainer from "./Components/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
+import HeaderContainer from "./Components/Header/HeaderContainer";
 
 
 
@@ -21,7 +21,7 @@ const  App = (props) => {
 
         <div className = "app-wrapper" >
 
-            <Header/>
+            <HeaderContainer/>
 
             <Navbar/>
 

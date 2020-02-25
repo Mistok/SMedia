@@ -1,5 +1,6 @@
 import React from 'react';
 import Class from  './users.module.css';
+import {NavLink} from "react-router-dom";
 
 
 let Users = (props) => {
@@ -26,10 +27,11 @@ let Users = (props) => {
             props.users.map( u => <div className={Class.users_card} key={u.id}>
 
                 <div className={Class.follow_section}>
-                    <div className={Class.users_photo}>
-                        <img className = {Class.users_photo} src = {u.photos.small || 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Nicolas_Cage_2011_CC.jpg/220px-Nicolas_Cage_2011_CC.jpg'} alt = "users photo"/>
-                    </div>
-
+                    <NavLink to={`/profile/${u.id}`}>
+                        <div className={Class.users_photo}>
+                            <img className = {Class.users_photo} src = {u.photos.small || 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Nicolas_Cage_2011_CC.jpg/220px-Nicolas_Cage_2011_CC.jpg'} alt = "users photo"/>
+                        </div>
+                    </NavLink>
                     <div className={Class.follow_btn_container}>
 
                         { u.followed
