@@ -37,7 +37,9 @@ let Users = (props) => {
                     <div className={Class.follow_btn_container}>
 
                         { u.followed
-                            ? <button className={Class.follow_btn} onClick = { () => {
+                            ? <button disabled={props.followingInProgress.some(id => id === u.id)} className={Class.follow_btn} onClick = { () => {
+
+                                props.toggleFollowingProgress(true, u.id);
                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
                                     withCredentials: true,
                                     headers: {
@@ -47,12 +49,18 @@ let Users = (props) => {
                                             if( response.data.resultCode === 0 ){
                                                 props.unFollow(u.id)
                                             }
-                                        }
-                                    );
+                                            props.toggleFollowingProgress(false, u.id);
+                                    });
 
                                 } } >Unfollow</button>
-                            : <button className={Class.follow_btn} onClick = { () => {
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                            : <button disabled={props.followingInProgress.some(id => id === u.id)} className={Class.follow_btn} onClick = { () => {
+                              /*  usersAPI.follow(u.id).then((data) => {
+                                    if( data.resultCode === 0 ){
+                                        props.follow(u.id)
+                                    }
+                                }*/
+                                props.toggleFollowingProgress(true, u.id);
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{}, {
                                     withCredentials: true,
                                     headers: {
                                         "API-KEY": "4a4082cc-18a2-460d-997e-6ba6efcd3eeb"
@@ -60,16 +68,8 @@ let Users = (props) => {
                                         if( response.data.resultCode === 0 ){
                                             props.follow(u.id)
                                         }
-                                    }
-                                );
-                                    /*usersAPI.follow(u.id)
-                                        .then((data) => {
-                                                if( data.resultCode === 0 ){
-                                                    props.follow(u.id)
-                                                }
-                                            }
-                                        );
-                                */
+                                        props.toggleFollowingProgress(false, u.id)
+                                    });
 
                                 } } >Follow</button>
                         } </div>

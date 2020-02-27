@@ -85,6 +85,9 @@
     border: none;
     letter-spacing: 2px;
 }
+.follow_btn:disabled{
+    background-color: #94DEF3 ;
+}
 .users_name{
     font-size: 18px;
     text-transform: capitalize;
