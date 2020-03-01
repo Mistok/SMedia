@@ -9,7 +9,7 @@ const Friend = (props) => {
 
             <div className = {`${Class.friend_wrapper}`}>
 
-                <img className = {`${Class.friend_ava}`} src='../../../../../img/ava_1.jpg' alt={`${props.name}'s photo`}/>
+                <img className = {`${Class.friend_ava}`} src={`../../../../../img/${props.img}`}  alt={`${props.name}'s photo`}/>
                 
                 <p className = {`${Class.friend_name}`}> { props.name} </p>
 
