@@ -8,7 +8,8 @@ import {
     setCurrentPage,
     setUsersTotalCount,
     toggleIsFetching,
-    toggleFollowingProgress
+    toggleFollowingProgress,
+    getUsersThunkCreator
 } from '../../redux/users-reducer';
 import Users from './Users';
 import *as axios from 'axios';
@@ -18,15 +19,15 @@ import {usersAPI} from '../../API/api';
 class UsersAPIComponent extends React.Component {
 
     componentDidMount(){
-         this.props.toggleIsFetching(true);
-
-         usersAPI.getUser(this.props.currentPage, this.props.pageSize).then((data) => {
-                 this.props.toggleIsFetching(false);
-                 this.props.setUsers(data.items);
-                 this.props.setUsersTotalCount(data.totalCount)
-             }
-         );
-
+         // this.props.toggleIsFetching(true);
+         //
+         // usersAPI.getUser(this.props.currentPage, this.props.pageSize).then((data) => {
+         //         this.props.toggleIsFetching(false);
+         //         this.props.setUsers(data.items);
+         //         this.props.setUsersTotalCount(data.totalCount)
+         //     }
+         // );
+        this.props.getUsersThunkCreator();
 
      }
 
@@ -90,5 +91,6 @@ export default connect(mapStateToProps, {
     setCurrentPage,
     setUsersTotalCount,
     toggleIsFetching,
-    toggleFollowingProgress
+    toggleFollowingProgress,
+    getUsersThunkCreator
 })(UsersAPIComponent);
