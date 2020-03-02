@@ -75,7 +75,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId  ]
-                    : state.followingInProgress.filter(id => id != action.userId)
+                    : state.followingInProgress.filter(id => id !== action.userId)
             };
         default:
 
@@ -83,9 +83,9 @@ const usersReducer = (state = initialState, action) => {
     }
 };
 
-export const follow = (userId) => ({type: FOLLOW, userId}); // follow action creator
+export const followSuccess = (userId) => ({type: FOLLOW, userId}); // follow action creator
 
-export const unFollow = (userId) => ({type: UNFOLLOW, userId}); // unfollow action creator
+export const unFollowSuccess = (userId) => ({type: UNFOLLOW, userId}); // unfollow action creator
 
 export const setUsers = (users) => ({type: SET_USERS, users});   // users from servers
 
@@ -97,7 +97,7 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId}); // preloader flag
 
-export const getUsersThunkCreator = (currentPage, pageSize) => {
+export const getUsers = (currentPage, pageSize) => { //getUsersThunkCreator
     return (dispatch) => {
 
         dispatch(toggleIsFetching(true));
@@ -113,4 +113,40 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
 
 };
 
+
+
+export const follow = (userId) => { //getUsersThunkCreator
+    return (dispatch) => {
+
+        dispatch(toggleFollowingProgress(true, userId));
+
+        usersAPI.follow(userId)
+            .then((response) => {
+                if( response.data.resultCode === 0 ){
+                    dispatch(followSuccess(userId))
+                }
+                dispatch(toggleFollowingProgress(false, userId))
+            });
+
+    }
+
+};
+
+
+export const unFollow = (userId) => { //getUsersThunkCreator
+    return (dispatch) => {
+
+        dispatch(toggleFollowingProgress(true, userId));
+
+        usersAPI.unFollow(userId)
+            .then((response) => {
+                if( response.data.resultCode === 0 ){
+                    dispatch(unFollowSuccess(userId))
+                }
+                dispatch(toggleFollowingProgress(false, userId))
+            });
+
+    }
+
+};
 export default usersReducer;
