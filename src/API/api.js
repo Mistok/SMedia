@@ -33,8 +33,25 @@ export const usersAPI = {
 
         return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
 
+    },
+    getAuth(){ // auth request for header component
+
+        return axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{
+            withCredentials: true
+        })
+
+    },
+    getUserProfile(userId){
+        console.log(2);
+        return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+
+            /*.then( response => {
+
+            return response.data;
+
+        })*/
+
     }
 
 };
-
 

@@ -113,8 +113,6 @@ export const getUsers = (currentPage, pageSize) => { //getUsersThunkCreator
 
 };
 
-
-
 export const follow = (userId) => { //getUsersThunkCreator
     return (dispatch) => {
 
@@ -132,7 +130,6 @@ export const follow = (userId) => { //getUsersThunkCreator
 
 };
 
-
 export const unFollow = (userId) => { //getUsersThunkCreator
     return (dispatch) => {
 
@@ -149,4 +146,5 @@ export const unFollow = (userId) => { //getUsersThunkCreator
     }
 
 };
+
 export default usersReducer;

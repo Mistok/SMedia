@@ -1,8 +1,7 @@
 import React from 'react';
 import Class from  './users.module.css';
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
-import {usersAPI} from "../../API/api";
+
 
 let Users = (props) => {
 
