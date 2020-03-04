@@ -3,6 +3,7 @@ import Class from './Dialogs.module.css';
 
 import DialogItem from './DialogItem/DialogsItem';
 import Message from './DialogMessage/DialogsMessage';
+import {Redirect} from "react-router";
 
 
 const Dialogs = (props) =>{
@@ -31,6 +32,9 @@ const Dialogs = (props) =>{
          props.updateNewMessageBody(body);
 
      };
+
+     if(props.isAuth === false) return <Redirect to={`/login`}/>;
+
 
     return (
         <div className = { Class.dialogWrapper }>
