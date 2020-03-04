@@ -3,7 +3,6 @@ import Class from './Dialogs.module.css';
 
 import DialogItem from './DialogItem/DialogsItem';
 import Message from './DialogMessage/DialogsMessage';
-import {Redirect} from "react-router";
 
 
 const Dialogs = (props) =>{
@@ -15,9 +14,6 @@ const Dialogs = (props) =>{
      let messagesElements =  state.messages.map( message => <Message message={message.message} />);
 
      let newMessageBody = state.newMessageBody;
-
-
-   // let newPostElement = React.createRef();
 
      let onSendMessage = () => {
 
@@ -32,8 +28,6 @@ const Dialogs = (props) =>{
          props.updateNewMessageBody(body);
 
      };
-
-     if(props.isAuth === false) return <Redirect to={`/login`}/>;
 
 
     return (
