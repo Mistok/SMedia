@@ -36,22 +36,21 @@ export const usersAPI = {
     },
     getAuth(){ // auth request for header component
 
-        return axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{
+        return instance.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,{
             withCredentials: true
         })
 
     },
     getUserProfile(userId){
-        console.log(2);
-        return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-
-            /*.then( response => {
-
-            return response.data;
-
-        })*/
+        return instance.get(`profile/${userId}`)
 
     }
 
 };
 
+export const authAPI = {
+    me() {
+        console.log(1);
+        return instance.get(`auth/me`)
+    }
+};

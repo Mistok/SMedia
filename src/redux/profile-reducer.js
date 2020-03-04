@@ -70,8 +70,7 @@ export const setUserProfile = (profile) => ({
 });
 
 export const getProfileThuncCreator = (userId) => {
-    console.log(1);
-    debugger;
+
     return (dispatch) =>{
 
         if( !userId ){
@@ -79,20 +78,13 @@ export const getProfileThuncCreator = (userId) => {
             userId = 2;
 
         }
-        usersAPI.getUserProfile(userId).then(response => console.log(response));
-        console.log(3);
+
         usersAPI.getUserProfile(userId)
             .then(response =>{
                 dispatch(setUserProfile(response.data));
             })
     }
 
-    /*
-        usersAPI.getUserProfile(userId)
-            .then(response =>{
-            this.props.setUserProfile(response.data);
-        })
-        */
 };
 
 export default profileReducer;
