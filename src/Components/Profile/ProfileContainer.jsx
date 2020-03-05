@@ -5,6 +5,7 @@ import {getProfileThuncCreator, setUserProfile} from '../../redux/profile-reduce
 import connect from 'react-redux/es/connect/connect';
 import {withRouter} from 'react-router-dom';
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 
 
@@ -29,7 +30,9 @@ class ProfileContainer extends React.Component{
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
+
+//let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
 
 
 let mapStateToProps = (state) => ({
@@ -38,6 +41,10 @@ let mapStateToProps = (state) => ({
 
 });
 
-let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent); // ВизРоутер добавляет информацию о строке запроса к компоненте
+//let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent); // ВизРоутер добавляет информацию о строке запроса к компоненте
 
-export default connect(mapStateToProps, { setUserProfile, getProfileThuncCreator })(WithUrlDataContainerComponent);
+export default compose(
+    connect(mapStateToProps, { getProfileThuncCreator }),
+    withRouter,
+    withAuthRedirect
+)(ProfileContainer);
