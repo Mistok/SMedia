@@ -2,6 +2,7 @@ import React from 'react';
 
 import Class from './ProfileInfo.module.css';
 import Preloader from "../../common/preloader/preloader";
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
     if ( !props.profile ){
@@ -26,6 +27,8 @@ const ProfileInfo = (props) => {
                     <div className={Class.name_section}>
 
                         <p className={Class.fullName}>{props.profile.fullName}</p>
+
+                        <ProfileStatus/>
 
                         {props.profile.lookingForAJobDescription ? <div className={Class.looking_For_A_Job}>{props.profile.loockingForAJob} </div>: <div>'undefined'</div>}
 
