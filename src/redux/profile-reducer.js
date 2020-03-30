@@ -1,11 +1,12 @@
 
 // profile page
-import {usersAPI} from '../API/api';
+import {profileAPI, usersAPI} from '../API/api';
 import {setUsers, setUsersTotalCount, toggleIsFetching} from "./users-reducer";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 let initialState = {
     posts: [
@@ -15,7 +16,8 @@ let initialState = {
         {id: 4, message: 'Howdy!', likesCount: 11}
     ],
     newPostText: 'it-kamasutra.com',
-    profile: null
+    profile: null,
+    status: ' default status '
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -26,8 +28,12 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newPostText: action.newText
-        };
-
+            };
+        case  SET_STATUS:
+            return {
+                ...state,
+                status: action.status
+            };
         case ADD_POST:
             return {
                 ...state,
@@ -69,6 +75,11 @@ export const setUserProfile = (profile) => ({
     profile
 });
 
+export const setStatus = (status) => ({
+    type: SET_STATUS,
+    status
+});
+
 export const getProfileThuncCreator = (userId) => {
 
     return (dispatch) =>{
@@ -87,4 +98,24 @@ export const getProfileThuncCreator = (userId) => {
 
 };
 
+export const getStatus = (userId) => (dispatch) => {
+
+    profileAPI.getStatus(userId)
+        .then(response =>{
+            debugger;
+            dispatch(setStatus(response.data));
+        })
+
+};
+
+export const updateStatus = (status) => (dispatch) => {
+
+    profileAPI.updateStatus(status)
+        .then(response =>{
+            if(response.data.resultCode === 0){
+                dispatch(setStatus(status));
+            }
+        })
+
+};
 export default profileReducer;
