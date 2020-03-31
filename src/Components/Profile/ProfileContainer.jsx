@@ -42,7 +42,7 @@ let mapStateToProps = (state) => ({
 
 //let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent); // ВизРоутер добавляет информацию о строке запроса к компоненте
 
-var getUserStatus;
+
 export default compose(
     connect(mapStateToProps, { getProfileThuncCreator, getStatus, updateStatus }),
     withRouter,

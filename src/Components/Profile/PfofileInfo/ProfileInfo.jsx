@@ -28,9 +28,7 @@ const ProfileInfo = (props) => {
 
                         <p className={Class.fullName}>{props.profile.fullName}</p>
 
-                        <ProfileStatus status = {props.status} />
-
-                        {props.profile.lookingForAJobDescription ? <div className={Class.looking_For_A_Job}>{props.profile.loockingForAJob} </div>: <div>'undefined'</div>}
+                        <ProfileStatus status = {props.status} updateStatus={props.updateStatus} />
 
                     </div>
                     <div className={Class.links_section}>
