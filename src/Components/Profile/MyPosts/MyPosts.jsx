@@ -2,7 +2,7 @@ import React from 'react';
 import Class from './MyPosts.module.css';
 
 import Post from './Post/Post';
-
+import {Field, reduxForm} from "redux-form";
 
 
 const MyPosts = (props) => {
@@ -25,6 +25,10 @@ const MyPosts = (props) => {
 
     };
 
+    let addNewPost = (values) => {
+        console.log(values.newPostText);
+        props.addPost(values.newPostText);
+    };
     return (
         <div>
 
@@ -32,32 +36,7 @@ const MyPosts = (props) => {
 
             <div className = { `${Class.new_post_container}` }>
 
-                <form action = "#" name="newPostForm">
-
-                    <textarea 
-                
-                        ref = { newPostElement } 
-
-                        onChange = { onPostChanges } 
-
-                        className = { `${Class.new_post_textarea}` } 
-
-                        name = "newPost" id="" cols="10" rows="5" 
-
-                        placeholder = "your new post" 
-
-                        value = { props.newPostText }
-
-                    >&nbsp;</textarea>
-                   
-                    <div 
-                        onClick = { onAddPost }
-                        
-                        className = { `${ Class.send_post }` } > send post
-
-                    </div>
-               
-                </form>
+                <AddNewPostFormRedux onSubmit={addNewPost}/>
 
             </div>
 
@@ -70,5 +49,35 @@ const MyPosts = (props) => {
         </div>
      )
 };
+
+let NewPostForm =  (props) => {
+    return( <form
+        onSubmit={props.handleSubmit}
+        name="newPostForm">
+
+        <Field
+
+            component='textarea'
+
+            className = { `${Class.new_post_textarea}` }
+
+            name = "newPostText" id="" cols="10" rows="5"
+
+            placeholder = "your new post"
+
+            value = { props.newPostText }
+
+        >&nbsp;</Field>
+
+        <button
+            className = { `${ Class.send_post }` }
+
+        > Send post </button>
+    </form>)
+};
+
+let AddNewPostFormRedux = reduxForm({
+    form: 'addNewPostFormRedux'
+})(NewPostForm);
 
 export default MyPosts;
