@@ -3,30 +3,17 @@ import Class from './MyPosts.module.css';
 
 import Post from './Post/Post';
 import {Field, reduxForm} from "redux-form";
+import {maxLengthCreator, requiredField} from "../../../Utils/Validators/validators";
+import {Textarea} from "../../common/FormControls/FormControls";
 
+let maxLength10 = maxLengthCreator(10);
 
 const MyPosts = (props) => {
 
     let postElements = props.posts.map( d => <Post message = {d.message} likesCount = {d.likesCount} />);
-    
-    let newPostElement = React.createRef();
-    
-    let onAddPost = () => {
 
-        props.addPost();
-
-     };
-
-    let onPostChanges = () => {
-
-        let text = newPostElement.current.value;
-
-        props.updateNewPostText(text);
-
-    };
-
-    let addNewPost = (values) => {
-        console.log(values.newPostText);
+    let onAddPost = (values) => {
+        //console.log(values.newPostText);
         props.addPost(values.newPostText);
     };
     return (
@@ -36,7 +23,7 @@ const MyPosts = (props) => {
 
             <div className = { `${Class.new_post_container}` }>
 
-                <AddNewPostFormRedux onSubmit={addNewPost}/>
+                <AddNewPostFormRedux onSubmit={onAddPost}/>
 
             </div>
 
@@ -57,13 +44,15 @@ let NewPostForm =  (props) => {
 
         <Field
 
-            component='textarea'
+            component={Textarea}
+
+            validate={[requiredField, maxLength10]}
 
             className = { `${Class.new_post_textarea}` }
 
             name = "newPostText" id="" cols="10" rows="5"
 
-            placeholder = "your new post"
+            placeholder = {"your new post2"}
 
             value = { props.newPostText }
 

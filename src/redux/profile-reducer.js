@@ -15,7 +15,6 @@ let initialState = {
         {id: 3, message: 'What`s up?', likesCount: 5},
         {id: 4, message: 'Howdy!', likesCount: 11}
     ],
-    newPostText: 'it-kamasutra.com',
     profile: null,
     status: ' default status '
 };
@@ -24,11 +23,6 @@ const profileReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
-        case  UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText
-            };
         case  SET_STATUS:
             return {
                 ...state,
