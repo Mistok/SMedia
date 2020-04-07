@@ -1,10 +1,9 @@
 
 // Authentication reducer
 import {authAPI} from "../API/api";
+import {stopSubmit} from 'redux-form';
 
 const SET_USER_DATA = 'SET_USER_DATA';
-
-
 
 let initialState = {
     userId: null,
@@ -50,6 +49,7 @@ export const getAuthUserData = () => (dispatch) => {
 };
 
 export const login = (email, password, rememberMe) => (dispatch) => {
+
     return (
 
         authAPI.login(email, password, rememberMe, true)
@@ -59,7 +59,8 @@ export const login = (email, password, rememberMe) => (dispatch) => {
                     if(response.data.resultCode === 0){
                         dispatch(getAuthUserData())
                     } else {
-                        console.error('wrong pass or login')
+                        let message = response.data.messages.length > 0 ? response.data.messages[0] : 'some error';
+                        dispatch(stopSubmit("login", {_error: message}));
                     }
                 }
             )
