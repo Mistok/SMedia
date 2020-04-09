@@ -34,3 +34,19 @@
     border-bottom: 1px solid #61dbfb !important;
 
 }
+.log_out_btn{
+    margin-left: 10px;
+    margin-right: 10px;
+    background: transparent;
+    padding: 5px;
+    border: 1px solid #61dbfb;
+    color: #61dbfb;
+    border-radius: 2px;
+    transition: .5s;
+    cursor: pointer;
+}
+.log_out_btn:hover{
+    background: #61dbfb;
+    border: 1px solid #4b6684;
+    color: #4b6684;
+}
