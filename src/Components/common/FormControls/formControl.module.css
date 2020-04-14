@@ -8,10 +8,13 @@
 }
 
 .form_control.error span{
-    color: red;
+    color: #ff7700;
+    margin-left: 10px;
+    font-size: 12px;
+    font-style: italic;
 }
 .formSummaryError{
     border: 1px solid red;
-    padding: 5px;
+    padding: 6px;
     color: yellow;
 }
