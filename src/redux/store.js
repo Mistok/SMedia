@@ -84,43 +84,9 @@ let store = {
 
         /* при вызове _callSubscriber выше, мы перезапишем значение функции, 
         в нее попадет observer из app.js, и перезагрузит содержимое страницы  
-        
-        renderEntireTree(store.getState());
-        =>
-        store.subscribe(renderEntireTree);
-        => 
-        store.js / subscribe(observer) { this._callSubscriber = observer; },
-        => ...
+
         */
     },
-
-     
-
-    /*
-    addPost() { // adding new post
-
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-        };
-        
-        this._state.profilePage.posts.push( newPost );
-        
-        this._state.profilePage.newPostText = '';
-    
-        this._callSubscriber(this._state);
-        
-    },
-
-    updateNewPostText(newText) {
-    
-        this._state.profilePage.newPostText = newText;
-    
-        this._callSubscriber(this._state)
-        
-    },
-    */
     
 };
 
