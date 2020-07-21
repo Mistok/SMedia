@@ -49,7 +49,8 @@ export const getAuthUserData = () => (dispatch) => {
 };
 
 export const login = (email, password, rememberMe) => (dispatch) => {
-
+    let action = stopSubmit('login', {email: 'Email is wrong'});
+    dispatch(action)
     return (
 
         authAPI.login(email, password, rememberMe, true)
@@ -62,9 +63,10 @@ export const login = (email, password, rememberMe) => (dispatch) => {
                         let message = response.data.messages.length > 0 ? response.data.messages[0] : 'some error';
                         dispatch(stopSubmit("login", {_error: message}));
                     }
+
                 }
             )
-    )
+    )   
 };
 
 export const logout = (email, password, rememberMe) => (dispatch) => {
