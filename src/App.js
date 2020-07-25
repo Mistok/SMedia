@@ -1,9 +1,9 @@
 import React from 'react';
-
+import {compose} from 'redux';
+import {connect} from "react-redux";
+import {BrowserRouter, Route, withRouter} from 'react-router-dom';
 
 import './App.css';
-
-import {BrowserRouter, Route} from 'react-router-dom';
 
 import Navbar from './Components/NavBar/NavBar';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
@@ -12,47 +12,52 @@ import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
 
+import getAuthUserData from './redux/auth-reducer.js'
 
-
-const  App = (props) => {
-
+class App extends React.Component {
+    
+    // componentDidMount(){
+    //     debugger
+    //     this.props.getAuthUserData()
+    // }
+    render(){
     return (
 
         <BrowserRouter>
 
-        <div className = "app-wrapper" >
+            <div className = "app-wrapper" >
 
-            <HeaderContainer/>
+                <HeaderContainer/>
 
-            <Navbar/>
+                <Navbar/>
 
-            <div className = 'app-wrapper-content'>
+                <div className = 'app-wrapper-content'>
 
-                <Route exact path = '/dialogs'  render = { () =>
+                    <Route exact path = '/dialogs'  render = { () =>
 
-                    <DialogsContainer/> }
+                        <DialogsContainer/> }
 
-                />
+                    />
 
-                <Route path = '/profile/:userId?' render = { () =>
+                    <Route path = '/profile/:userId?' render = { () =>
 
-                    <ProfileContainer /> }
-                />
-                <Route path = '/users' render = { () =>
+                        <ProfileContainer /> }
+                    />
+                    <Route path = '/users' render = { () =>
 
-                    <UsersContainer/> }
+                        <UsersContainer/> }
 
-                />
-                <Route path = '/login' render = { () =>
+                    />
+                    <Route path = '/login' render = { () =>
 
-                    <Login/> }
+                        <Login/> }
 
-                />
+                    />
 
+                </div>
             </div>
-        </div>
 
-    </BrowserRouter>)
-};
-
-    export default App; 
+        </BrowserRouter>)
+    };
+}
+export default connect( null, {getAuthUserData})(App);
