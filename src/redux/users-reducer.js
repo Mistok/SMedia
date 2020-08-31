@@ -130,7 +130,6 @@ export const follow = (userId) => { //getUsersThunkCreator
     }
 
 };
-
 export const unFollow = (userId) => { //getUsersThunkCreator
     return (dispatch) => {
 
