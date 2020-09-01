@@ -10,6 +10,7 @@ import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import UsersContainer from "./Components/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
+import Login from "./Components/Login/Login";
 
 
 
@@ -19,33 +20,39 @@ const  App = (props) => {
 
         <BrowserRouter>
 
-        <div className = "app-wrapper" >
+            <div className = "app-wrapper" >
 
-            <HeaderContainer/>
+                <HeaderContainer/>
 
-            <Navbar/>
+                <Navbar/>
 
-            <div className = 'app-wrapper-content'>
+                <div className = 'app-wrapper-content'>
 
-                <Route exact path = '/dialogs'  render = { () =>
+                    <Route exact path = '/dialogs'  render = { () =>
 
-                    <DialogsContainer/> }
+                        <DialogsContainer/> }
 
-                />
+                    />
 
-                <Route path = '/profile/:userId?' render = { () =>
+                    <Route path = '/profile/:userId?' render = { () =>
 
-                    <ProfileContainer /> }
-                />
-                <Route path = '/users' render = { () =>
+                        <ProfileContainer /> }
+                    />
+                    <Route path = '/users' render = { () =>
 
-                    <UsersContainer/> }
+                        <UsersContainer/> }
 
-                />
+                    />
+                    <Route path = '/login' render = { () =>
+
+                        <Login/> }
+
+                    />
+                </div>
             </div>
-        </div>
 
-    </BrowserRouter>)
+        </BrowserRouter>
+    )
 };
 
     export default App; 
