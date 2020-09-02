@@ -36,7 +36,7 @@ const  App = (props) => {
 
                     <Route path = '/profile/:userId?' render = { () =>
 
-                        <ProfileContainer /> }
+                        <ProfileContainer/> }
                     />
                     <Route path = '/users' render = { () =>
 
@@ -55,4 +55,4 @@ const  App = (props) => {
     )
 };
 
-    export default App; 
+export default App;
