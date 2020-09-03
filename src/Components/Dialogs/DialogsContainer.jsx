@@ -5,13 +5,14 @@ import  {updateNewMessageBodyCreator, sendMessageCreator} from  '../../redux/dia
 import connect from "react-redux/es/connect/connect";
 
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 let mapStateToProps = (state) => {
     return {
          dialogsPage: state.dialogsPage,
     }
 };
-let AuthRedirectComponent = withAuthRedirect(Dialogs);
+
 
 let mapDispatchToProps = (dispatch) => {
     return {
@@ -23,6 +24,10 @@ let mapDispatchToProps = (dispatch) => {
     }
 };
 
-const DialogsContainer = connect( mapStateToProps, mapDispatchToProps )(AuthRedirectComponent) ;
 
-export default DialogsContainer;
+//
+// let AuthRedirectComponent = withAuthRedirect(Dialogs);
+//
+// const DialogsContainer = connect( mapStateToProps, mapDispatchToProps )(AuthRedirectComponent) ;
+
+export default compose(connect( mapStateToProps, mapDispatchToProps ), withAuthRedirect)(Dialogs) ;
