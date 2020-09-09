@@ -6,7 +6,6 @@ import ProfileInfo from './PfofileInfo/ProfileInfo';
 import MyPostsContainer from './MyPosts/MyPostsContainer.jsx';
 
 const Profile = (props) => {
-
     return(
            
         <main className = {Class.content}>
