@@ -29,11 +29,11 @@ const ProfileInfo = (props) => {
 
                         <div className={Class.status_container}>
 
-                            <ProfileStatus status={"hello my friends"} />
+                            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
 
                         </div>
 
-                        {props.profile.lookingForAJobDescription ? <div className={Class.looking_For_A_Job}>{props.profile.loockingForAJob} </div>: <div>'undefined'</div>}
+                        {/*{props.profile.lookingForAJobDescription ? <div className={Class.looking_For_A_Job}>{props.profile.loockingForAJob} </div>: <div>'undefined'</div>}*/}
 
                     </div>
                     <div className={Class.links_section}>
