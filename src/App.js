@@ -43,10 +43,7 @@ const  App = (props) => {
                         <UsersContainer/> }
 
                     />
-                    <Route path = '/login' render = { () =>
-
-                        <Login/> }
-
+                    <Route path = '/login' component={Login}
                     />
                 </div>
             </div>
