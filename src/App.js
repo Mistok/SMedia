@@ -5,51 +5,48 @@ import './App.css';
 
 import {BrowserRouter, Route} from 'react-router-dom';
 
-import Navbar from './Components/NavBar/NavBar';
-import DialogsContainer from './Components/Dialogs/DialogsContainer';
+import Navbar from "./Components/NavBar/NavBar"
+import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
 
 
+class App extends React.Component {
 
-const  App = (props) => {
+    // componentDidMount(){
+    //     debugger
+    //     this.props.getAuthUserData()
+    // }
+    render() {
+        return (
 
-    return (
+            <BrowserRouter>
 
-        <BrowserRouter>
+                <div className="app-wrapper">
 
-            <div className = "app-wrapper" >
+                    <HeaderContainer/>
 
-                <HeaderContainer/>
+                    <Navbar/>
 
-                <Navbar/>
+                    <div className='app-wrapper-content'>
 
-                <div className = 'app-wrapper-content'>
+                        <Route exact path='/dialogs' component={DialogsContainer}/>
 
-                    <Route exact path = '/dialogs'  render = { () =>
+                        <Route path='/profile/:userId?' render={() =>
 
-                        <DialogsContainer/> }
-
-                    />
-
-                    <Route path = '/profile/:userId?' render = { () =>
-
-                        <ProfileContainer/> }
-                    />
-                    <Route path = '/users' render = { () =>
-
-                        <UsersContainer/> }
-
-                    />
-                    <Route path = '/login' component={Login}
-                    />
+                            <ProfileContainer/>}
+                        />
+                        <Route path='/users' component={UsersContainer}/>
+                        <Route path='/login' component={Login}
+                        />
+                    </div>
                 </div>
-            </div>
 
-        </BrowserRouter>
-    )
-};
+            </BrowserRouter>
+        )
+    }
+}
 
 export default App;

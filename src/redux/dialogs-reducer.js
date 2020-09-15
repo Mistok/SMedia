@@ -19,7 +19,6 @@ let initialState ={
         {id: 5, message: 'Trump'},
         {id: 6, message: 'zzz'}
     ],
-    newMessageBody: ''
 };
 
 
@@ -27,20 +26,12 @@ const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case UPDATE_NEW_MESSAGE_BODY:
-
-            return {
-                ...state,
-                newMessageBody: action.newBody
-            };
-
         case SEND_MESSAGE:
 
-            let body = state.newMessageBody;
+            let body = action.newMessageBody;
 
             return {
                 ...state,
-                newMessageBody: '',
                 messages: [...state.messages, { id: 6, message: body }]
             };
 
@@ -49,88 +40,16 @@ const dialogsReducer = (state = initialState, action) => {
             return state;
 
     }
-
-
-/*
-const dialogsReducer = (state = initialState, action) => {
-
-    let stateCopy;
-
-    switch (action.type) {
-
-        case UPDATE_NEW_MESSAGE_BODY:
-            stateCopy ={
-                ...state,
-                newMessageBody: action.newBody
-            };
-
-            return stateCopy;
-
-        case SEND_MESSAGE:
-
-            let body = state.newMessageBody;
-
-            stateCopy = {
-                ...state,
-                newMessageBody: '',
-                messages: [...state.messages, { id: 6, message: body }]
-            };
-
-            return stateCopy;
-
-        default:
-
-            return state;
-
-    }
-    */
-
-
-
-/*
-
-    if( action.type === UPDATE_NEW_MESSAGE_BODY ){ // dialogs change textarea
-
-            let stateCopy = {...state};
-
-            stateCopy.newMessageBody = action.newBody;
-
-        return stateCopy;
-
-    }   else if( action.type === SEND_MESSAGE ){ // dialogs send message
-
-        let stateCopy = {...state};
-
-        stateCopy.messages = [...state.messages];
-
-        let body = stateCopy.newMessageBody; // записываем в локальную переменную сообщение
-
-        stateCopy.messages.push( { id: 6, message: body } ); // добавляем новое сообщение в список сообщений
-
-        stateCopy.newMessageBody = ''; // очищаем глобальную переменную
-
-        return stateCopy;
-    }
-    return state;
-    */
 
 };
 
 export default dialogsReducer;
 
-export const sendMessageCreator = () => {
+export const sendMessageCreator = (sendMessageBody) => {
 
     return {
-        type: SEND_MESSAGE
-    }
-
-};
-
-export const updateNewMessageBodyCreator = (body) => {
-
-    return {
-        type: UPDATE_NEW_MESSAGE_BODY,
-        newBody: body
+        type: SEND_MESSAGE,
+        newMessageBody: sendMessageBody
     }
 
 };

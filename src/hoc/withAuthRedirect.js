@@ -1,26 +1,54 @@
-import * as React from "react";
+// import * as React from "react";
+// import {Redirect} from "react-router";
+// import connect from "react-redux/es/connect/connect";
+//
+//
+// let mapStateToPropsForRedirect = (state) => ({
+//     isAuth: state.auth.isAuth
+// });
+//
+// export const withAuthRedirect = (Component) => {
+//
+//     class RedirectComponent extends React.Component {
+//         render () {
+//             if(this.props.isAuth=== false){
+//                 return <Redirect to={"/login"} />
+//             }
+//
+//             return <Component {...this.props}/>
+//         }
+//     }
+//
+//     let ConnectedAuthRedirectComponent = connect(mapStateToPropsForRedirect)(RedirectComponent);
+//
+//
+//     return ConnectedAuthRedirectComponent;
+// };
+
 import {Redirect} from "react-router";
+import React from "react";
 import connect from "react-redux/es/connect/connect";
 
-
 let mapStateToPropsForRedirect = (state) => ({
+
     isAuth: state.auth.isAuth
+
 });
 
 export const withAuthRedirect = (Component) => {
 
-    class RedirectComponent extends React.Component {
-        render () {
-            if(this.props.isAuth=== false){
-                return <Redirect to={"/login"} />
-            }
+    class RedirectComponent extends React.Component{
+
+        render(){
+
+            if( !this.props.isAuth ) return <Redirect to={`/login`}/>;
 
             return <Component {...this.props}/>
+
         }
     }
 
-    let ConnectedAuthRedirectComponent = connect(mapStateToPropsForRedirect)(RedirectComponent);
 
+    return connect(mapStateToPropsForRedirect)(RedirectComponent);
 
-    return ConnectedAuthRedirectComponent;
 };

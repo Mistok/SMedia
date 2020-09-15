@@ -2,27 +2,47 @@ import React from 'react';
 import Class from './MyPosts.module.css';
 
 import Post from './Post/Post';
+import {reduxForm, Field} from "redux-form";
 
 
+export const AddPostsForm = (props) => {
+    return (
+        <form name="newPostForm" onSubmit={ props.handleSubmit }>
+
+            <Field
+
+                component={'textarea'}
+
+                className = { `${Class.new_post_textarea}` }
+
+                name = "newPostText" id="" cols="10" rows="5"
+
+                placeholder = "your new post"
+
+            >&nbsp;</Field>
+
+            <button
+
+                className = { `${ Class.send_post }` } >
+
+                send post
+
+            </button>
+
+        </form>
+    )
+};
+
+const AddPostFormRedux = reduxForm({form: 'AddPostForm'})(AddPostsForm);
 
 const MyPosts = (props) => {
 
     let postElements = props.posts.map( d => <Post message = {d.message} likesCount = {d.likesCount} />);
-    
-    let newPostElement = React.createRef();
-    
-    let onAddPost = () => {
 
-        props.addPost();
 
-     };
+    let addNewPost = (values) => {
 
-    let onPostChanges = () => {
-
-        let text = newPostElement.current.value;
-
-        props.updateNewPostText(text);
-
+        props.addPost(values.newPostText)
     };
 
     return (
@@ -32,32 +52,7 @@ const MyPosts = (props) => {
 
             <div className = { `${Class.new_post_container}` }>
 
-                <form action = "#" name="newPostForm">
-
-                    <textarea 
-                
-                        ref = { newPostElement } 
-
-                        onChange = { onPostChanges } 
-
-                        className = { `${Class.new_post_textarea}` } 
-
-                        name = "newPost" id="" cols="10" rows="5" 
-
-                        placeholder = "your new post" 
-
-                        value = { props.newPostText }
-
-                    >&nbsp;</textarea>
-                   
-                    <div 
-                        onClick = { onAddPost }
-                        
-                        className = { `${ Class.send_post }` } > send post
-
-                    </div>
-               
-                </form>
+                <AddPostFormRedux onSubmit = { addNewPost }/>
 
             </div>
 
@@ -70,5 +65,7 @@ const MyPosts = (props) => {
         </div>
      )
 };
+
+
 
 export default MyPosts;
