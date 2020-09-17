@@ -1,7 +1,7 @@
 import React from 'react';
 import {Class} from './Login.mudule.css';
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../common/FormControls/FormControls";
+import {Input} from "../common/FormsControls/FormsControls";
 
 const LoginForm = (props) => {
     return <>
