@@ -2,18 +2,19 @@ import React from 'react';
 import {Class} from './Login.mudule.css';
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormsControls/FormsControls";
+import {required} from "../../utils/validators/validators";
 
 const LoginForm = (props) => {
     return <>
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field name={'login'} component={'input'} type="text" placeholder='login'/>
+                <Field name={'login'} component={Input} type="text" placeholder='login' validate={[required]}/>
             </div>
             <div>
-                <Field name={'password'} component={'input'} type="password" placeholder='password'/>
+                <Field name={'password'} component={Input} type="password" placeholder='password' validate={[required]}/>
             </div>
             <div>
-                <Field name={'rememberMe'} component={'input'} id={'remember'}  type={'checkbox'}/>
+                <Field name={'rememberMe'} component={'Input'} id={'remember'}  type={'checkbox'}/>
                 <label htmlFor="remember">{'remember me'}</label>
             </div>
             <div>
