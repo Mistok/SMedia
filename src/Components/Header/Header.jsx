@@ -8,17 +8,17 @@ import {connect} from "react-redux";
 const Header = (props) => {
 
     return (
-    <header className={Class.header}>
-        <img src={logo} alt="logo" className={Class.header_img}/>
-        <div className={Class.login_block}>
-            {props.isAuth
-                ? <div>{props.login} - <button onClick={props.logout}>Logout</button></div>
-                : <NavLink to={'/login'} activeClassName={`${Class.active}`}>Login</NavLink>}
+        <header className={Class.header}>
+            <img src={logo} alt="logo" className={Class.header_img}/>
+            <div className={Class.login_block}>
+                {props.isAuth
+                    ? <div>{props.login} - <button onClick={props.logout}>Logout</button></div>
+                    : <NavLink to={'/login'} activeClassName={`${Class.active}`}>Login</NavLink>}
 
-        </div>
-     </header>
-     
-     )
+            </div>
+        </header>
+
+    )
 };
 
 export default connect(null, {logout})(Header)

@@ -30,8 +30,9 @@ const authReducer = ( state = initialState, action) => {
 };
 
 export const setAuthUsersData  = (userId, email, login, isAuth) => ({type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
+
 export const getAuthUserData = () => (dispatch) => {
-    authAPI.me()
+    return authAPI.me()
         .then((response) => {
 
                 if(response.data.resultCode === 0){
@@ -40,6 +41,7 @@ export const getAuthUserData = () => (dispatch) => {
                 }
             }
         );
+
 };
 export const login = (email, password, rememberMe) => (dispatch) => {
     authAPI.login(email, password, rememberMe)
@@ -49,10 +51,11 @@ export const login = (email, password, rememberMe) => (dispatch) => {
                     dispatch(getAuthUserData())
                 } else {
                     let message = response.data.messages.length > 0 ? response.data.messages[0] : "some error o_O";
-                    dispatch(stopSubmit("login", {email: message}))
+                    dispatch(stopSubmit("login", {email: "Email is wrong"}))
                 }
             }
         );
+
 };
 export const logout = (email, password, rememberMe) => (dispatch) => {
     authAPI.logout()
