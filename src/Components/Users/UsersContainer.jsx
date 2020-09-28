@@ -9,8 +9,14 @@ import {
     setUsersTotalCount,
     toggleIsFetching,
     toggleFollowingProgress,
-    getUsers
+    requestUsers
 } from '../../redux/users-reducer';
+import {
+    getCurrentPage,
+    getFollowingInProgress, getIsFetching,
+    getPageSize, getTotalUsersCount,
+    getUsers
+} from "../../redux/usersSelectors";
 import Users from './Users';
 import Preloader from '../common/preloader/preloader';
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
@@ -53,27 +59,46 @@ class UsersAPIComponent extends React.Component {
     }
 }
 
+// let mapStateToProps = (state) => {
+//
+//     return {
+//
+//         users: state.usersPage.users,
+//
+//         pageSize: state.usersPage.pageSize,
+//
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//
+//         currentPage: state.usersPage.currentPage,
+//
+//         isFetching: state.usersPage.isFetching,
+//
+//         followingInProgress: state.usersPage.followingInProgress
+//
+//     }
+// };
+
 let mapStateToProps = (state) => {
 
     return {
 
-        users: state.usersPage.users,
+        users: getUsers(state),
 
-        pageSize: state.usersPage.pageSize,
+        pageSize: getPageSize(state),
 
-        totalUsersCount: state.usersPage.totalUsersCount,
+        totalUsersCount: getTotalUsersCount(state),
 
-        currentPage: state.usersPage.currentPage,
+        currentPage: getCurrentPage(state),
 
-        isFetching: state.usersPage.isFetching,
+        isFetching: getIsFetching(state),
 
-        followingInProgress: state.usersPage.followingInProgress
+        followingInProgress: getFollowingInProgress(state)
 
     }
 };
 
 
-let withAuthUsersComponent = withAuthRedirect(UsersAPIComponent);
+// let withAuthUsersComponent = withAuthRedirect(UsersAPIComponent);
 
 export default compose(
     connect(mapStateToProps, {
@@ -84,7 +109,7 @@ export default compose(
         setUsersTotalCount,
         toggleIsFetching,
         toggleFollowingProgress,
-        getUsers
+        getUsers: requestUsers
     }),
     withAuthRedirect
 )(UsersAPIComponent);

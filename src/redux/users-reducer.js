@@ -98,7 +98,7 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId}); // preloader flag
 
-export const getUsers = (currentPage, pageSize) => { //getUsersThunkCreator
+export const requestUsers = (currentPage, pageSize) => { //getUsersThunkCreator
     return (dispatch) => {
 
         dispatch(toggleIsFetching(true));
