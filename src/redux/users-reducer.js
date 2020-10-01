@@ -22,7 +22,7 @@ let initialState = {
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-
+        case "FAKE": return {...state, fake: action.fake +1};
         case FOLLOW:
             return {
                 ...state,
@@ -35,7 +35,6 @@ const usersReducer = (state = initialState, action) => {
             };
 
         case UNFOLLOW:
-
             return {
                 ...state,
                 users: state.users.map( u => {
@@ -98,12 +97,12 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId}); // preloader flag
 
-export const requestUsers = (currentPage, pageSize) => { //getUsersThunkCreator
+export const requestUsers = (page, pageSize) => { //getUsersThunkCreator
     return (dispatch) => {
 
         dispatch(toggleIsFetching(true));
-
-        usersAPI.getUser(currentPage, pageSize).then((data) => {
+        dispatch(setCurrentPage(page));
+        usersAPI.getUser(page, pageSize).then((data) => {
                 dispatch(toggleIsFetching(false));
                 dispatch(setUsers(data.items));
                 dispatch(setUsersTotalCount(data.totalCount));
