@@ -3,6 +3,7 @@ import React from 'react';
 import Class from './ProfileInfo.module.css';
 import Preloader from "../../common/preloader/preloader";
 import ProfileStatus from "./ProfileStatus"
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 const ProfileInfo = (props) => {
     if ( !props.profile ){
         return <Preloader />
@@ -29,11 +30,9 @@ const ProfileInfo = (props) => {
 
                         <div className={Class.status_container}>
 
-                            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
 
                         </div>
-
-                        {/*{props.profile.lookingForAJobDescription ? <div className={Class.looking_For_A_Job}>{props.profile.loockingForAJob} </div>: <div>'undefined'</div>}*/}
 
                     </div>
                     <div className={Class.links_section}>
