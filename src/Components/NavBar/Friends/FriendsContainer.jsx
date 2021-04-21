@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Friends  from './Friends';
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 
 let getFriendsData = (state) => {
     return{

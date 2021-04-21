@@ -5,6 +5,9 @@ import {profileAPI, usersAPI} from "../API/api";
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET_STATUS';
+const DELETE_POST = 'DELETE_POST';
+
+
 let initialState = {
     posts: [
         {id: 1, message: 'Hi, how are you?', likesCount: 12},
@@ -37,6 +40,12 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status
             };
+        case DELETE_POST:
+
+            return {
+                ...state,
+                posts: state.posts.filter(p => p.id !== action.postId)
+            };
         default:
             return state;
     }
@@ -68,10 +77,18 @@ export const setStatus = (status) =>{
     }
 };
 
-// thunc creators для быстрой обработки аякс запросов
+export const deletePost = (postId) =>{
+    return {
+        type: DELETE_POST,
+        postId
+    }
+};
+
+// thunc creators
 
 export const getUserProfile = (userId) => (dispatch) => {
-    usersAPI.getProfile(userId).then(response =>{
+    usersAPI.getProfile(userId)
+        .then(response =>{
         dispatch(setUserProfile(response.data));
     })
 };
