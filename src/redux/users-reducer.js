@@ -2,6 +2,7 @@
 
 // users page
 import {usersAPI} from "../API/api";
+import {updateObjectArray} from "../utils/object-util";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -25,22 +26,24 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map( u => {
-                    if( u.id === action.userId ){ // если у пользователя айди совпадает с переданым в action
-                        return { ...u, followed: true }  // возвращаем копию state с измененным followed
-                    }
-                    return u;
-                } )
+                // users: state.users.map( u => {
+                //     if( u.id === action.userId ){ // если у пользователя айди совпадает с переданым в action
+                //         return { ...u, followed: true }  // возвращаем копию state с измененным followed
+                //     }
+                //     return u;
+                // } )
+                users: updateObjectArray(state.users, action.userId, "id", {followed: true})
             };
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map( u => {
-                    if( u.id === action.userId ){ // если у пользователя айди совпадает с переданым в action
-                        return {...u, followed: false } // возвращаем копию state с измененным followed
-                    }
-                    return u;
-                } )
+                // users: state.users.map( u => {
+                //     if( u.id === action.userId ){ // если у пользователя айди совпадает с переданым в action
+                //         return {...u, followed: false } // возвращаем копию state с измененным followed
+                //     }
+                //     return u;
+                // } )
+                users: updateObjectArray(state.users, action.userId, "id", {followed: false})
             };
         case SET_USERS:
             return{

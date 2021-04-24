@@ -3,7 +3,7 @@ import React from 'react';
 
 import './App.css';
 
-import {BrowserRouter, Route} from 'react-router-dom';
+import { Route} from 'react-router-dom';
 
 import Navbar from "./Components/NavBar/NavBar"
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
@@ -11,7 +11,6 @@ import UsersContainer from "./Components/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
-import {getAuthUserData} from "./redux/auth-reducer";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import { withRouter } from "react-router";
@@ -31,7 +30,7 @@ class App extends React.Component {
         }
         return (
 
-            <BrowserRouter>
+            // <BrowserRouter>
 
                 <div className="app-wrapper">
 
@@ -53,7 +52,7 @@ class App extends React.Component {
                     </div>
                 </div>
 
-            </BrowserRouter>
+            // </BrowserRouter>
         )
     }
 }
