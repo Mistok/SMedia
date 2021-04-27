@@ -80,8 +80,6 @@ class UsersAPIComponent extends React.Component {
 
 let mapStateToProps = (state) => {
 
-    console.log('mapStateToProps USERS');
-
     return {
 
         users: getUsers(state),
