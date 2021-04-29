@@ -13,15 +13,15 @@ const LoginForm = ({handleSubmit, error}) => {
             <div>
                 {createField('Email', 'email',  [required], Input)}
                 {createField('Password', 'password',  [required], Input, {type: "password"})}
-                {createField(null, 'rememberMe',  [required], Input, {type: "checkbox"})}
+                {createField(null, 'rememberMe',  [], Input, {type: "checkbox"})}
             </div>
-            <div>
-                <Field name={'password'} component={Input} type="password" placeholder='password' validate={[required]}/>
-            </div>
-            <div>
-                <Field name={'rememberMe'} component={'Input'} id={'remember'}  type={'checkbox'}/>
-                <label htmlFor="remember">{'remember me'}</label>
-            </div>
+            {/*<div>*/}
+            {/*    <Field name={'password'} component={Input} type="password" placeholder='password' validate={[required]}/>*/}
+            {/*</div>*/}
+            {/*<div>*/}
+            {/*    <Field name={'rememberMe'} component={'Input'} id={'remember'}  type={'checkbox'}/>*/}
+            {/*    <label htmlFor="remember">{'remember me'}</label>*/}
+            {/*</div>*/}
             {error &&
                 <div className={style.formSummaryError}>
                     {error}
