@@ -18,7 +18,7 @@ let Paginator = ({totalUsersCount, pageSize, onPageChanged, currentPage}) => {
                 return <span onClick={
                     (e) => {onPageChanged(p)}
                 }
-                             className={`${Class.paginationPage} ${currentPage === p && Class.selected}`}>{p}</span>
+                     className={`${Class.paginationPage} ${currentPage === p && Class.selected}`}>{p}</span>
 
             })}
         </div>
