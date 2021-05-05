@@ -20,7 +20,7 @@ let Users = ({currentPage, totalUsersCount, pageSize, onPageChanged, ...props}) 
             currentPage={currentPage}
             onPageChanged={onPageChanged}
             pageSize={pageSize}
-            totalUsersCount={totalUsersCount} />
+            totalItemsCount={totalUsersCount} />
 
         <div className={Class.users_container}>
             {
