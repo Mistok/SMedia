@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "http://Mistok.github.io/SMedia",
+  "homepage": "https://mistok.github.io/SMedia/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free-regular": "^5.0.13",
