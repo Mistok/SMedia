@@ -19,7 +19,7 @@ import {
 } from "../../redux/usersSelectors";
 import Users from './Users';
 import Preloader from '../common/preloader/preloader';
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
 
 

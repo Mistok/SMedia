@@ -4,7 +4,7 @@ import Class from './MyPosts.module.css';
 
 import Post from './Post/Post';
 import {reduxForm, Field} from "redux-form";
-import {maxLengthCreator, required} from "../../../utils/validators/validators";
+import {maxLengthCreator, requiredField} from "../../../utils/validators/validators";
 import {Textarea} from "../../common/FormsControls/FormsControls";
 
 const maxLength10 = maxLengthCreator(10);
@@ -18,7 +18,7 @@ export const AddPostsForm = (props) => {
                 name = {"newPostText"}
                 cols="10" rows="5"
                 placeholder = {"your new post"}
-                validate={[required, maxLength10 ]}
+                validate={[requiredField, maxLength10 ]}
             >&nbsp;</Field>
             <button
                 className = { `${ Class.send_post }` } >
