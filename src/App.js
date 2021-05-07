@@ -5,9 +5,7 @@ import './App.css';
 
 import {BrowserRouter, Route} from 'react-router-dom';
 
-import Navbar from "./Components/NavBar/NavBar"
-// import DialogsContainer from "./Components/Dialogs/DialogsContainer";
-// import ProfileContainer from "./Components/Profile/ProfileContainer";
+import NavBar from "./Components/NavBar/NavBar";
 import UsersContainer from "./Components/Users/UsersContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
@@ -33,11 +31,8 @@ class App extends React.Component {
         }
         return (
                 <div className="app-wrapper">
-
                     <HeaderContainer/>
-
-                    <Navbar/>
-
+                    <NavBar/>
                     <div className='app-wrapper-content'>
                         <Route exact path='/dialogs' render={withSuspense(DialogsContainer)}/>
                         <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
@@ -58,7 +53,7 @@ let AppContainer = compose(
     connect(mapStateToProps, {initializeApp}))(App);
 
 let SamuraiAppJs = (props) => {
-    return <BrowserRouter>
+    return <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Provider store = { store }>
                 <AppContainer />
             </Provider>
