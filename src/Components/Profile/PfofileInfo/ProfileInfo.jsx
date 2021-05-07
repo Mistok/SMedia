@@ -2,7 +2,7 @@ import React from 'react';
 
 import Class from './ProfileInfo.module.css';
 import Preloader from "../../common/preloader/preloader";
-import ProfileStatus from './ProfileStatus';
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
     if ( !props.profile ){
@@ -11,25 +11,17 @@ const ProfileInfo = (props) => {
 
     return(
         <div className='profileInfo'>
-
             <div className={Class.main_picture}/>
-
             <div className={`${Class.profile_info_container } + ${Class.padd}`}>
-
                 <div className={Class.ava}>
-
                     <img className={Class.ava_img} src={props.profile.photos.large} />
-
                 </div>
-
                 <div className={`${Class.description} + ${Class.padd}`}>
-
                     <div className={Class.name_section}>
-
                         <p className={Class.fullName}>{props.profile.fullName}</p>
-
-                        <ProfileStatus status = {props.status} updateStatus={props.updateStatus} />
-
+                        <div className={Class.status_container}>
+                            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                        </div>
                     </div>
                     <div className={Class.links_section}>
                         <div className={Class.socials}>
@@ -41,7 +33,7 @@ const ProfileInfo = (props) => {
                     </div>
 
                 </div>
-                
+
             </div>
         </div>
     )

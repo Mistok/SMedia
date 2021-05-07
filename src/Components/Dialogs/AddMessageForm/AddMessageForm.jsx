@@ -2,7 +2,7 @@ import React from 'react';
 import Class from '../Dialogs.module.css';
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../../common/FormControls/FormControls";
-import {maxLengthCreator, requiredField} from "../../../Utils/Validators/validators";
+import {maxLengthCreator, requiredField} from "../../../utils/validators/validators";
 
 
 

@@ -27,10 +27,10 @@ img{
 
 .post_content{
     display: grid;
-    grid-template-columns: 
-        "t t"
-        "lp lc "
-    ;
+    grid-template-columns:
+            "t t"
+            "lp lc "
+;
 }
 
 .post_text{
@@ -45,7 +45,7 @@ img{
     text-align: center;
 }
 
-.like_panel{  
+.like_panel{
     padding: 15px;
     display: flex;
     justify-content: space-around;
@@ -70,15 +70,14 @@ img{
     font-style: italic;
     font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 5px;
-    font-size: grey;
+    color: grey;
     font-weight: bold;
     grid-area: lc;
 }
 
-
 @media (min-width: 850px) {
-    
-    .like_panel{  
+
+    .like_panel{
         justify-content: left;
     }
     .likes_count{
