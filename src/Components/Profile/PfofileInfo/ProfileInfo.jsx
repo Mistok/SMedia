@@ -9,13 +9,19 @@ const ProfileInfo = (props) => {
         return <Preloader />
     }
 
+    const  onMainPhotoSelected = (e) => {
+        e.target.files.length && props.savePhoto(e.target.files[0]);
+    }
+
     return(
         <div className='profileInfo'>
             <div className={Class.main_picture}/>
             <div className={`${Class.profile_info_container } + ${Class.padd}`}>
                 <div className={Class.ava}>
                     <img className={Class.ava_img} src={props.profile.photos.large || usersPhoto} />
+                    { props.isOwner &&  <input type={"file"} onChange={onMainPhotoSelected}/> }
                 </div>
+
                 <div className={`${Class.description} + ${Class.padd}`}>
                     <div className={Class.name_section}>
                         <p className={Class.fullName}>{props.profile.fullName}</p>
@@ -31,10 +37,9 @@ const ProfileInfo = (props) => {
                             <a className={Class.social_link} href={props.profile.contacts.facebook}>FB</a>
                         </div>
                     </div>
-
                 </div>
-
             </div>
+
         </div>
     )
 };

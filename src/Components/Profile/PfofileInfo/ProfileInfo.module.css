@@ -18,7 +18,21 @@
 .profile_info_container{
     display: flex;
     flex-direction: row;
+}
+.ava{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.ava input{
+    margin-top: 20px;
+    max-width: 100%;
 
+    background: #4b6684;
+    color: white;
+    font-size: 11px;
+    border: none;
 }
 .ava_img{
     width: 200px;
