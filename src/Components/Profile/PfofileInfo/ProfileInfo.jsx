@@ -6,6 +6,7 @@ import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import usersPhoto from "../../../assets/user.jpg";
 import ProfileDataForm from "./ProfileDataForm";
 const ProfileInfo = (props) => {
+
     const [editMode, activateEditMode] = useState(false);
 
     if ( !props.profile ){
@@ -68,8 +69,14 @@ const ProfileInfo = (props) => {
                     { props.isOwner &&  <input type={"file"} onChange={onMainPhotoSelected}/> }
                 </div>
                 {editMode
-                    ? <ProfileDataForm profile={props.profile} onSubmit={onSubmit} isOwner={props.isOwner}/>
-                    : <ProfileData profile={props.profile} isOwner={props.isOwner} activateEditMod={() => activateEditMode(true)}/>}
+                    ? <ProfileDataForm
+                        initialValue={props.profile}
+                        onSubmit={onSubmit}
+                        isOwner={props.isOwner}/>
+                    : <ProfileData
+                        profile={props.profile}
+                        isOwner={props.isOwner}
+                        activateEditMod={() => activateEditMode(true)}/>}
             </div>
         </div>
     )
