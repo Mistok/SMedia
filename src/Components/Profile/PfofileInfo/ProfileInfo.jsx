@@ -5,6 +5,7 @@ import Preloader from "../../common/preloader/preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import usersPhoto from "../../../assets/user.jpg";
 import ProfileDataForm from "./ProfileDataForm";
+
 const ProfileInfo = (props) => {
 
     const [editMode, activateEditMode] = useState(false);
@@ -24,8 +25,11 @@ const ProfileInfo = (props) => {
     }
 
     const onSubmit = (formData) => {
-        props.saveProfile(formData);
-        activateEditMode(false);
+        props.saveProfile(formData).then(
+            ()=> {
+                activateEditMode(false);
+            }
+        )
     }
 
     const ProfileData = ({profile, isOwner, activateEditMod}) => {
@@ -69,10 +73,12 @@ const ProfileInfo = (props) => {
                     <img className={Class.ava_img} src={props.profile.photos.large || usersPhoto}  alt={'avatar'}/>
                     { props.isOwner &&  <input type={"file"} onChange={onMainPhotoSelected}/> }
                 </div>
+
                 {editMode
                     ? <ProfileDataForm
                         initialValues={props.profile}
                         onSubmit={onSubmit}
+                        profile={props.profile}
                         isOwner={props.isOwner}/>
                     : <ProfileData
                         profile={props.profile}
