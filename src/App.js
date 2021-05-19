@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import NavBar from "./Components/NavBar/NavBar";
 import UsersContainer from "./Components/Users/UsersContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
@@ -31,10 +31,21 @@ class App extends React.Component {
                 <HeaderContainer/>
                 <NavBar/>
                 <div className='app-wrapper-content'>
-                    <Route exact path='/dialogs' render={withSuspense(DialogsContainer)}/>
-                    <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
-                    <Route path='/users' component={UsersContainer}/>
-                    <Route path='/login' component={Login}/>
+                    <Switch>
+                        <Route exact path='/' render={()=><Redirect to={"/profile"}/>}/>
+                        <Route exact path='/dialogs' render={withSuspense(DialogsContainer)}/>
+                        <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
+                        <Route path='/users' component={UsersContainer}/>
+                        <Route path='/login' component={Login}/>
+                        <Route path='/login/facebook' render={()=>
+                            <div>Facebook</div>
+                        }/>
+                        <Route path='*' render={()=>
+                            <div>404 page not found</div>
+                        }/>
+                    </Switch>
+
+
                 </div>
             </div>
         )

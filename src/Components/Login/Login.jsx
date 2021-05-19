@@ -10,7 +10,7 @@ import style from "../common/FormsControls/FormsControls.module.css"
 const LoginForm = ({handleSubmit, error, captchaUrl}) => {
 
     return <>
-        <form onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
             <div>
                 {createField('Email', 'email',  [requiredField], Input)}
                 {createField('Password', 'password',  [requiredField], Input, {type: "password"})}
@@ -38,6 +38,7 @@ const LoginReduxForm = reduxForm({
 })(LoginForm);
 
 const Login = (props) => {
+
     const onSubmit = (formData) => {
         props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     };
