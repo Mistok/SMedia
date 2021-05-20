@@ -101,24 +101,31 @@ export const savePhotoSuccess = (photos) =>{
 // thunk creators
 
 export const getUserProfile = (userId) => async (dispatch) => {
-    let response = await usersAPI.getProfile(userId)
+    let response = await usersAPI.getProfile(userId);
     dispatch(setUserProfile(response.data));
 };
 
 export const getStatus = (userId) => async (dispatch) => {
-    let response = await profileAPI.getStatus(userId)
+    let response = await profileAPI.getStatus(userId);
     dispatch(setStatus(response.data));
 };
 
 export const updateStatus = (status) => async (dispatch) => {
-    let response = await profileAPI.updateStatus(status)
-    if (response.data.resultCode === 0 ){
-        dispatch(setStatus(status));
+    try{
+        let response = await profileAPI.updateStatus(status);
+        if (response.data.resultCode === 0 ){
+            dispatch(setStatus(status));
+        } else if(response.data.resultCode === 1 ){
+                alert(`Ошибка: ${response.data.messages[0]}`);
+        }
+    } catch (e) {
+        console.log(e)
     }
+    
 };
 
 export const savePhoto = (file) => async (dispatch) => {
-    let response = await profileAPI.savePhoto(file)
+    let response = await profileAPI.savePhoto(file);
     if (response.data.resultCode === 0 ){
         dispatch(savePhotoSuccess(response.data.data.photos));
     }
@@ -126,7 +133,7 @@ export const savePhoto = (file) => async (dispatch) => {
 
 export const saveProfile = (profile) => async (dispatch, getState) => {
     const userId = getState().auth.userId;
-    const response = await profileAPI.saveProfile(profile)
+    const response = await profileAPI.saveProfile(profile);
 
     if (response.data.resultCode === 0 ){
         dispatch(getUserProfile(userId));

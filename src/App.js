@@ -18,10 +18,20 @@ const DialogsContainer = React.lazy(() => import("./Components/Dialogs/DialogsCo
 const ProfileContainer = React.lazy(() => import("./Components/Profile/ProfileContainer"));
 
 class App extends React.Component {
-
-    componentDidMount(){
-        this.props.initializeApp()
+    handleAllUnhandledErrors = (error) => {
+        debugger
+        console.log(error)
+        alert(error.reason)
+       
     }
+    componentDidMount(){
+        this.props.initializeApp();
+        window.addEventListener('unhandledrejection', this.handleAllUnhandledErrors);
+    }
+    componentWillUnmount() {
+        window.addEventListener('unhandledrejection', this.handleAllUnhandledErrors);
+    }
+
     render() {
         if(!this.props.initialized){
             return <Preloader/>
@@ -44,8 +54,6 @@ class App extends React.Component {
                             <div>404 page not found</div>
                         }/>
                     </Switch>
-
-
                 </div>
             </div>
         )
