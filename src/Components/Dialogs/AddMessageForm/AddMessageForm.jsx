@@ -4,8 +4,6 @@ import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../../common/FormControls/FormControls";
 import {maxLengthCreator, requiredField} from "../../../utils/validators/validators";
 
-
-
 const maxLength50 = maxLengthCreator(50);
 const AddMessageForm = (props) => {
     return(<form

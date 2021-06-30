@@ -1,4 +1,5 @@
 //friends reducer
+
 let initialState = {
     friendsData: [
         {id: 1, name: 'Dimych',  img: 'ava_1.jpeg'},
@@ -10,9 +11,11 @@ let initialState = {
     ]
 };
 
-export const friendsReducer = (state = initialState, action) => {
+type InitialStateType = typeof initialState
+
+export const sidebarReducer = (state = initialState, action: any) => {
     return state;
 };
 
 
-export default friendsReducer;
+export default sidebarReducer;

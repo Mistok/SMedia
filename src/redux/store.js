@@ -1,7 +1,7 @@
 // profile page
 import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
-import friendsReducer from "./friends-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
@@ -72,7 +72,7 @@ let store = {
 
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 
-        this._state.friends = friendsReducer(this._state.friends, action);
+        this._state.friends = sidebarReducer(this._state.friends, action);
 
         this._callSubscriber( this._state ); // перезагружаем страницу с новым сообщением
 
