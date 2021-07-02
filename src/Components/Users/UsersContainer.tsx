@@ -72,7 +72,7 @@ class UsersAPIComponent extends React.Component<PropsType> {
 
     render() {
         return  <>
-            <h2>{this.props.pageTitle}</h2>
+            <h2 style={{height: 0, fontSize: 0}}>{this.props.pageTitle}</h2>
             {this.props.isFetching ? <Preloader/> : null }
 
             <Users

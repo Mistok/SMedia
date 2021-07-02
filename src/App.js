@@ -48,7 +48,7 @@ class App extends React.Component {
                         <Route
                             path='/users'
                             // component={UsersContainer}
-                            render={()=> <UsersContainer pageTitle={'Samurays'}/>}/>
+                            render={()=> <UsersContainer pageTitle={''}/>}/>
                         <Route path='/login' component={Login}/>
                         <Route path='/login/facebook' render={()=>
                             <div>Facebook</div>
